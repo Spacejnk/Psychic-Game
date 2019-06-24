@@ -46,3 +46,14 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+h1 {
+    margin: 20px; 
+    color: red;
+    font-size: 50px;
+}
+
+h3, h2, p {
+	margin: 20px; 
+    color: rgb(8, 14, 5);
+}
