@@ -1,31 +1,44 @@
 
 var timesClicked = -8;
 var xtimesClicked = 0;
-var guesses = 0;
+var guesses = [8];
 var losses = 0;
 
-// wins
+// var alpha = ['a','b','c','d','e','f','g','h','i','j','k','l',
+// 'm','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+// var computerChoice = alpha[Math.floor(Math.random() * alpha.length)];
+
+// console.log(word)
+
+
+
+// wins function
 function winClick(){
     xtimesClicked ++;
 
-    document.getElementById("winClicked").innerHTML = xtimesClicked;
+    document.getElementById("winClick").innerHTML = xtimesClicked;
     return true;
 }
-// guesses
+
+// guesses function
 function guessClick(){
     timesClicked ++;
 
     if(timesClicked == 1) {
-       alert("game over!");
+       console.log("game over!");
        document.location.reload();
-    }else{
-        console.log('continue');
+       alert("game over!");
     }
+    // else{
+    //     console.log('dcontinue');
+    // }
 
     document.getElementById("guessClick").innerHTML = timesClicked;
     return true;
 }
-// losses
+
+// losses function
 function lostClick(){
     xtimesClicked ++;
 
@@ -33,16 +46,41 @@ function lostClick(){
     return true;
 }
 
+// word function
 var word = "";
 function dump(event) {
     var unicode = event.keyCode? event.keyCode : event.charCode;
-    var actualkey = String.fromCharCode(unicode);
-    word += actualkey + ", ";
-    console.log(word);
+    var alpha = ['a','b','c','d','e','f','g','h','i','j','k','l',
+    'm','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    var computerChoice = alpha[Math.floor(Math.random() * alpha.length)];
+    var actualkey = String.fromCharCode(computerChoice);
+    word +=  computerChoice + ", ";
+    computerChoice === guessClick();
+
+
+    var elem = document.getElementById('lettersClicked');
     
+    
+    
+    if(elem.innerHTML.indexOf(computerChoice) > -1 ){
+
+    lostClick();
+        
+    } else{
+    winClick();
+
+    }
+    
+    
+    var targetLetters = document.getElementById( 'lettersClicked' );
+
+    // To get the text only, you can use "textContent"
+    console.log( targetLetters.textContent ); // "1 2 3 4"
+
 
     document.getElementById("lettersClicked").innerHTML = word;
     return true;
+
 }
 document.onkeypress = dump;
 
@@ -51,15 +89,4 @@ document.onkeypress = dump;
 
 
 
-
-
-
-
-
-
-// document.onkeyup = function(event) {
-//     var key_press = String.fromCharCode(event.keyCode);
-//     var status = document.getElementById('status');
-//     status.innerHTML = "UP Event Fired For : " +key_press;
-// }
 
