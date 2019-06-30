@@ -1,65 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/reset.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
     <title>The Psychic Game</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="container">
-
-        <h1>
-            The Psychic Game
-        </h1>
-        
-        <h3>
-            Guess what letter I'm thinking of
-        </h3>
-
-        <h3 onclick="winClick()">
-            Wins: <span id="winClick">0</span>
-        </h3>
-
-        <h3 onclick="lostClick()">
-            Losses: <span id="lostClick">0</span>
-        </h3>
-        
-        <h3>
-            Guesses Left: <span id="guessClick">8</span>
-        </h3>
-
-        <h3>Your guesses so far: <span id="lettersClicked"></span></h3>
+      <h1>
+        The Psychic Game
+      </h1>
+      <h3>
+        Guess what letter I'm thinking of
+      </h3>
+      <h3>Wins: <span id="win">0</span></h3>
+      <h3>Losses: <span id="lose">0</span></h3>
+      <h3>Guesses Left: <span id="guessesLeft">8</span></h3>
+      <h3>Your guesses so far: <span id="guesses"></span></h3>
     </div>
-        <br>
-        
-    <h2>javascript capture keyboard input example</h2>
-
+    <br />
+    <!-- <h2>javascript capture keyboard input example</h2>
     <h3>onkeydown - onkeyup</h3>
-
     <p>Key Pressed : <span id="kp"></span></p>
-
-    <p>Key  Code : <span id="kc"></span></p>
-    
+    <p>Key Code : <span id="kc"></span></p>
     <p id="status">Keyboard Event Status</p>
-
-    <br>
-
-    <hr>
-
+    <br /> -->
+    <hr />
     <h2>Pseudo-Code Below:</h2>
     <p>Create an on-click event to change number in wins</p>
     <p>Connect on-click with keyboard press</p>
     <p>Create an on-click event to change number guesses left with game over</p>
     <p>Create an on-click function to add letters onto page</p>
-
-    
-    
-    
-    
     <script src="assets/javascript/game.js"></script>
-</body>
+  </body>
 </html>

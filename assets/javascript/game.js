@@ -1,197 +1,83 @@
-var timesClicked = 8;
-var xtimesClicked = 0;
+
+// set wins and losses to 0
 var wins = 0;
 var losses = 0;
-var guesses;
-
-var alpha = ['a','b','c','d','e','f','g','h','i','j','k','l',
- 'm','n','o','p','q','r','s','t','u','v','w','x','y','z'];
- 
-var word = "";
-
-
-// wins function
-function winClick(){
-    xtimesClicked --;
-
-    document.getElementById("winClick").innerHTML = xtimesClicked;
-    return true;
+// decrement number of guest left
+var guessesLeft = 8;
+// var for compChoice math random function
+var compChoice;
+// create empty array for user guess
+var userGuesses = [];
+// target each id in span tag
+var winId = document.getElementById("win");
+var lossesId = document.getElementById("lose");
+var guessesLeftId = document.getElementById("guessesLeft");
+var guessesId = document.getElementById("guesses");
+var userGuessesId = document.getElementById("guesses");
+// create an array for math.Random comparison with user keyboard event
+var letters = [
+ "a",
+ "b",
+ "c",
+ "d",
+ "e",
+ "f",
+ "g",
+ "h",
+ "i",
+ "j",
+ "k",
+ "l",
+ "m",
+ "n",
+ "o",
+ "p",
+ "q",
+ "r",
+ "s",
+ "t",
+ "u",
+ "v",
+ "w",
+ "x",
+ "y",
+ "z"
+];
+// function to randomize letters
+function compChoiceLetter() {
+ return letters[Math.floor(Math.random() * letters.length)];
 }
-// losses function
-function lostClick(){
-    xtimesClicked ++;
-
-    document.getElementById("lostClick").innerHTML = xtimesClicked;
-    return true;
-}
-// guesses function
-function guessClick(){
-    timesClicked --;
-
-    if(timesClicked == 0) {
-       console.log("game over!");
-       document.location.reload();
-       alert("game over!");
-    }
-
-    document.getElementById("guessClick").innerHTML = timesClicked;
-    return true;
-}
-// word function
-function dump(event) {
-    var unicode = event.keyCode? event.keyCode : event.charCode;
-    var computerChoice = alpha[Math.floor(Math.random() * alpha.length)];
-    var actualkey = String.fromCharCode(alpha);
-    word +=  alpha + ", ";
-    alpha === guessClick();
-
-   //var elem = document.getElementById('lettersClicked').innerHTML += alpha;
-   var elem = document.getElementById('lettersClicked').innerHTML += word;
-
-   
-   
-   
-   
-//    console.log(alpha);
-//    console.log(word);
-   
-   
-   
-   
-   
-   
-   
-//    var elem = document.getElementById('lettersClicked')
-    
-    
-    
-    
-//     var targetLetters = document.getElementById( 'lettersClicked' );
-
-//     // To get the text only, you can use "textContent"
-//     console.log( targetLetters.textContent ); // "1 2 3 4"
-
-
-//      document.getElementById("lettersClicked").innerHTML.textContent = alpha[i];
-//      return true;
-
-}
-document.onkeypress = dump;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // wins function
-// function winClick(){
-//     xtimesClicked ++;
-
-//     document.getElementById("winClick").innerHTML = xtimesClicked;
-//     return true;
-// }
-
-// // guesses function
-// function guessClick(){
-//     timesClicked ++;
-
-//     if(timesClicked == 1) {
-//        console.log("game over!");
-//        document.location.reload();
-//        alert("game over!");
-//     }
-//     // else{
-//     //     console.log('dcontinue');
-//     // }
-
-//     document.getElementById("guessClick").innerHTML = timesClicked;
-//     return true;
-// }
-
-// // losses function
-// function lostClick(){
-//     xtimesClicked ++;
-
-//     document.getElementById("lostClick").innerHTML = xtimesClicked;
-//     return true;
-// }
-
-// // word function
-// var word = "";
-// function dump(event) {
-//     var alpha = ['a','b','c','d','e','f','g','h','i','j','k','l',
-//     'm','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-//     var computerChoice = alpha[Math.floor(Math.random() * alpha.length)];
-//     var actualkey = String.fromCharCode(computerChoice);
-//     word +=  computerChoice + ", ";
-//     computerChoice === guessClick();
-//     console.log()
-
-
-//     var elem = document.getElementById('lettersClicked');
-    
-    
-    
-//     if(elem.innerHTML.indexOf(computerChoice) > -1 ){
-
-//     lostClick();
-        
-//     } else{
-//     winClick();
-
-//     }
-    
-    
-//     var targetLetters = document.getElementById( 'lettersClicked' );
-
-//     // To get the text only, you can use "textContent"
-//     console.log( targetLetters.textContent ); // "1 2 3 4"
-
-
-//     document.getElementById("lettersClicked").innerHTML = word;
-//     return true;
-
-// }
-// document.onkeypress = dump;
+// assign the math.Rand function to compChoice
+compChoice = compChoiceLetter();
+console.log(compChoice);
+document.onkeyup = function(event) {
+ guessesLeft--;
+ guessesLeftId.textContent = guessesLeft;
+ userGuesses += event.key + ", ";
+ userGuessesId.textContent = userGuesses;
+ // if event.key match win++
+ if (event.key === compChoice) {
+  wins++;
+  winId.textContent = wins;
+  compChoiceLetter();
+    alert("match");
+  guessesLeft = 8;
+  guessesLeftId.textContent = guessesLeft;
+  return;
+ }
+
+ if (guessesLeft === 0) {
+   console.log(guessesLeft);
+  guessesLeftId.textContent = 0;
+  losses++;
+  lossesId.textContent = losses;
+  compChoiceLetter();
+  // alert("You lose");
+  userGuesses = "";
+  userGuessesId.textContent = "";
+  guessesLeft = 9;
+  guessesLeftId.textContent = guessesLeft;
+  return;
+ }
+
+};
