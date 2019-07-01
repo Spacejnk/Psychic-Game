@@ -12,7 +12,6 @@ var userGuesses = [];
 var winId = document.getElementById("win");
 var lossesId = document.getElementById("lose");
 var guessesLeftId = document.getElementById("guessesLeft");
-var guessesId = document.getElementById("guesses");
 var userGuessesId = document.getElementById("guesses");
 // create an array for math.Random comparison with user keyboard event
 var letters = [
@@ -57,25 +56,27 @@ document.onkeyup = function(event) {
  userGuessesId.textContent = userGuesses;
  // if event.key match win++
  if (event.key === compChoice) {
+// append text increase wins count
   wins++;
   winId.textContent = wins;
   compChoiceLetter();
-    alert("match");
+  console.log("line 62 match");
   guessesLeft = 8;
   guessesLeftId.textContent = guessesLeft;
   return;
- }
+ } 
 
  if (guessesLeft === 0) {
-   console.log(guessesLeft);
+  console.log("you have " +  guessesLeft + " guess left.");
   guessesLeftId.textContent = 0;
+  // append text and increase losses count
   losses++;
   lossesId.textContent = losses;
   compChoiceLetter();
-  // alert("You lose");
+  console.log("You lose");
   userGuesses = "";
   userGuessesId.textContent = "";
-  guessesLeft = 9;
+  guessesLeft = 8;
   guessesLeftId.textContent = guessesLeft;
   return;
  }
