@@ -1,4 +1,4 @@
-
+var z = 0;
 // set wins and losses to 0
 var wins = 0;
 var losses = 0;
@@ -80,5 +80,8 @@ document.onkeyup = function(event) {
   guessesLeftId.textContent = guessesLeft;
   return;
  }
+
+
+
 
 };
