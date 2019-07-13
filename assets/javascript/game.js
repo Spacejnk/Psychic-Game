@@ -49,6 +49,7 @@ function compChoiceLetter() {
 // assign the math.Rand function to compChoice
 compChoice = compChoiceLetter();
 console.log(compChoice);
+
 document.onkeyup = function(event) {
  guessesLeft--;
  guessesLeftId.textContent = guessesLeft;
@@ -59,7 +60,10 @@ document.onkeyup = function(event) {
 // append text increase wins count
   wins++;
   winId.textContent = wins;
-  compChoiceLetter();
+  
+  compChoice = compChoiceLetter();
+  console.log(compChoice + "after win");
+  userGuesses = [];
   console.log("line 62 match");
   guessesLeft = 8;
   guessesLeftId.textContent = guessesLeft;
