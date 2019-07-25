@@ -63,8 +63,8 @@ h3, h2, p, #button {
 #button {
 	color: rgba(245, 115, 16, 0.769);
 	text-align: center;
-	margin-left: 700px;
+	
 }
 
-
+.buttonHolder{ text-align: center; }
 
